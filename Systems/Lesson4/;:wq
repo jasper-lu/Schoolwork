@@ -1,0 +1,12 @@
+#include <stdio.h>
+
+void main(int argc, char * argv[] )
+{
+    printf("%c", *argv[2]);
+    /*
+    int a = argv[1];
+    int b = argv[3];
+    if(argv[2] == '+')
+	printf("%d", a+b);
+	*/
+}
