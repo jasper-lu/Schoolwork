@@ -2,8 +2,6 @@
 
 int main(int argc, char * argv[] )
 {
-    int a = *argv[1] - '0';
-    int b = *argv[3] - '0';
 
 /*    if(af != a || bf != b)
     {
@@ -22,6 +20,9 @@ int main(int argc, char * argv[] )
 	printf("Too many.");
 	return -1;
     }
+
+    int a = *argv[1] - '0';
+    int b = *argv[3] - '0';
 
     switch (*argv[2])
     {
