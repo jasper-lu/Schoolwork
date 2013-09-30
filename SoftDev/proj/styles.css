@@ -1,0 +1,11 @@
+@keyframes rotate
+{
+    from {transform: rotate-y(0deg)}
+    to {transform: rotate-y(0deg)}
+}
+
+@webkit-keyframes rotate
+{
+    from {-webkit-transform: rotate-y(0deg)}
+    to {-webkit-transform: rotate-y(360deg)}
+}

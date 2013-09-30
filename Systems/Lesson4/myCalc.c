@@ -9,20 +9,20 @@ int main(int argc, char * argv[] )
 	return -1;
     }
 */
-    if(!argv[0] || !argv[1] || !argv[2])
+    if(!argv[1] || !*argv[2] || !*argv[3])
     {
 	printf("More arguments please."); 
 	return -1;
     }
 
     if(argv[4])
-    {
+    {	
 	printf("Too many.");
 	return -1;
     }
 
-    int a = *argv[1] - '0';
-    int b = *argv[3] - '0';
+    int a = atoi(argv[1]);
+    int b = atoi(argv[3]);
 
     switch (*argv[2])
     {
@@ -37,6 +37,9 @@ int main(int argc, char * argv[] )
 		printf("You can't make me divide by zero. Nice try.");
 	    else
 		printf("%d", a/b);
+	    break;
+	case '*':
+	    printf("%d", a*b);
 	    break;
     }
 
@@ -66,13 +69,13 @@ void strprint(char * blah)
 }
 
 //char * strcat(char * front, char * end)
-char *mystrcat ( char *dest, const char * src)
+char *mystrcat ( char *begin, const char * end)
 {
-    char *d = dest;
-    while(*d)
-	++d;
-    while((*d++= *src++) != '\0')
+    char *t = begin;
+    while(*t)
+	++t;
+    while((*t++= *end++) != '\0')
 	;
-    strprint(dest);
-    return dest;
+    strprint(begin);
+    return begin;
 }

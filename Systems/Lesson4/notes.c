@@ -10,3 +10,4 @@ void main()
     ++p;
     printf("int y??: %d", *p);
 }
+//should put in good, detailed error messages
