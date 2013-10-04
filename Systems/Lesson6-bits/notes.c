@@ -23,10 +23,10 @@ void main()
     //&, |, ~, ^ deal with bits.
     unsigned char a = 7;
     unsigned char b = 12;
-    unsigned char w = a & b
-    unsigned char x = a | b
-    unsigned char y = a ^ b
-    unsigned char z = ~a
+    unsigned char w = a & b;
+    unsigned char x = a | b;
+    unsigned char y = a ^ b;
+    unsigned char z = ~a;
     
     //Bit-wise &. This generates each bit with conditionals. Returns a 1 bit if both have a 1 bit in that location
     //| - bit wise or
@@ -37,4 +37,61 @@ void main()
     //& 0 0 0 0 0 0 1 0 0
     //| 0 0 0 0 0 1 1 1 1
     //^ 0 0 0 0 0 1 0 1 1 
+    //
+    //CAN STORE ANSWERS IN BITS.
+    //Why would you want to store answers in bits rather than bytes??? Because you can store them in 1 Gigabyte, or store the same thing in one eighth of that size -- 128 Megabytes -- using bits.
+    //
+    //In a bit array:
+    //1 0 0 1 0 1 1 0
+    //You want to know what is in bit two.
+    //You construct a bit with 
+    //0 0 0 0 0 1 0 0 -- everything except 2 is zero.
+    unsigned char X = 150;
+    unsigned char MASK = 4;
+    //Mask has only the bit you want to see = 1
+    if (X & MASK > 0)
+	;
+    //By using the bit-wise and, you check whether or not the bit you want is 1 in both.
+    //If you wanna set just one bit to either value 1 or value 0. 
+    //Can also manipulate bits to make a bit true.
+    //make a mask:
+    //0 0 0 0 1 0 0 0
+    //and the bit array:
+    //1 0 0 1 0 0 1 0
+    //then, set x = x | MASK.
+    //this returns:
+    //1 0 0 1 1 0 1 0
+    //
+    //if you want to make something equal to 0:
+    //1 0 0 1 0 1 1 0
+    //MASK:
+    //1 1 1 0 1 1 1 1 
+    //X & MASK returns:
+    //1 0 0 0 0 1 1 0 -- the result that you wanted.
+    //
+    //However, an easier way to do this is to have mask be:
+    //0 0 0 1 0 0 0 0. Then, X = X & ~MASK
+    //Bit shifting.
+    //>> RIGHT-SHIFT and
+    //<< LEFT-SHIFT
+    //13 -- 0 0 0 0 1 1 0 1
+    unsigned char shift  = 13;
+    unsigned char lshift = shift << 1;
+    //this produces a new value...
+    //0 0 0 1 1 0 1 0 = 26.
+    //What do you notice???? Left-shift basically multiplies something by two.
+    //The trailing bit on the left gets lost and a 0 comes in from the right.
+    //Then, can also shift i to the right.
+    unsigned char rshift = shift >> 2;
+    //produces:
+    //0 0 0 0 0 1 1 0 = 6;
+    //Right shifting basically divides by two and rounds down.
+    //It's eas to create masks this way.
+    ONES = 1;
+    //Ones is 0 0 0 0 0 0 0 1;
+    //then,
+    unsigned char mask1 = ONES << 3;
+    //would make mask1 = 0 0 0 0 1 0 0 0
+    //Don't even need to make the variable. Can just:
+    unsigned char mask2 = 1 << 3;
 }
