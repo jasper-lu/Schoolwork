@@ -1,16 +1,27 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#define RED 1
+#define YELLOW 2
+#define GREEN 3
+#define DEAD 0
+
 void print_size(int* x)
 {
-    printf("%d", sizeof(x));
+    printf("%lu", sizeof(x));
 }
 void max_malloc();
 void multiMatrix();
 unsigned char SetBit(unsigned char data, int bit_position, int value);
+void SetState(int whichLight, int state);
+int GetState(int whichLight);
+
+unsigned char traffic[25] ={0};
 
 void main()
 {
+    SetState(5,GREEN);
+    printf("%d", GetState(5));
     /*
     int a[3][3] = {
 	{1,2,3},
@@ -24,14 +35,35 @@ void main()
     };
     multiMatrix(a,b);
     */
+    /*
     unsigned char d = 5;
     d = SetBit(d,1,1);
     printf("%d ", d);
     d = SetBit(d,2,0);
 
     printf("%d", d);
+    */
 }
 
+void SetState(int whichLight, int state)
+{
+    int pos = (whichLight % 4) * 2;
+    int n = whichLight / 4; 
+    state = state << pos;
+    traffic[n] = traffic[n] | state;
+    traffic[n] = traffic[n] & state;
+}
+
+int GetState(int whichLight)
+{
+    int pos = (whichLight % 4) * 2;
+    int n = whichLight / 4;
+    int ret = traffic[n];
+    ret = ret << (6 - pos);
+    ret = ret >> 6; 
+    return ret;
+}
+   
 unsigned char SetBit(unsigned char data, int bit_position, int value)
 {
     unsigned char shift = 1 << bit_position; 
@@ -74,7 +106,7 @@ void max_malloc()
     while(1)
     {
 	n = malloc(4);
-	printf("%d", sizeof(n));
+	printf("%lu", sizeof(n));
 	if(!n)
 	    break;
     }
