@@ -7,9 +7,11 @@ void print_size(int* x)
 }
 void max_malloc();
 void multiMatrix();
+unsigned char SetBit(unsigned char data, int bit_position, int value);
 
 void main()
 {
+    /*
     int a[3][3] = {
 	{1,2,3},
 	{4,5,6},
@@ -21,8 +23,23 @@ void main()
 	{16,17,18},
     };
     multiMatrix(a,b);
+    */
+    unsigned char d = 5;
+    d = SetBit(d,1,1);
+    printf("%d ", d);
+    d = SetBit(d,2,0);
+
+    printf("%d", d);
 }
 
+unsigned char SetBit(unsigned char data, int bit_position, int value)
+{
+    unsigned char shift = 1 << bit_position; 
+    if(value==0)
+	return data & ~shift; 
+    else
+	return data | shift;
+}
 void multiMatrix(int a[3][3], int b[3][3])
 {
     int r; 
