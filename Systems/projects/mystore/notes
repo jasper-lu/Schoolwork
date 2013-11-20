@@ -1,0 +1,5 @@
+struct namevalue *S;
+S = calloc(Q, sizeof(Struct NameValue));
+Q is the number of elements in the mystore.
+
+Do it by changing colons to null bytes, etc. to easily get separate strings/ values.
